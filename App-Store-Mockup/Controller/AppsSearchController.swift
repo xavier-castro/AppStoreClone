@@ -16,6 +16,37 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
+        fetchITunesApps()
+    }
+
+    struct SearchResult: Decodable {
+        let resultCount: Int
+        let results: [Result]
+    }
+
+    struct Result: Decodable {
+        let trackName: String
+        let primaryGenreName: String
+    }
+
+    fileprivate func fetchITunesApps() {
+        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
+        guard let url = URL(string: urlString) else { return }
+        // Fetch data from internet
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error  = error {
+                print("Failed to fetch apps:", error)
+                return
+            }
+            // Successful
+            guard let data = data else { return }
+            do {
+                let searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
+                searchResult.results.forEach({print($0.trackName, $0.primaryGenreName)})
+            } catch let jsonError {
+                print("Failed to decode json:", jsonError)
+            }
+        }.resume() // Fires off the request
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -23,7 +54,8 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchResultCell
+        cell.appIconLabel.text = "HERE IS MY APP NAME"
         return cell
     }
 
