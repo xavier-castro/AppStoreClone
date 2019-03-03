@@ -19,16 +19,6 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         fetchITunesApps()
     }
 
-    struct SearchResult: Decodable {
-        let resultCount: Int
-        let results: [Result]
-    }
-
-    struct Result: Decodable {
-        let trackName: String
-        let primaryGenreName: String
-    }
-
     fileprivate func fetchITunesApps() {
         let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
         guard let url = URL(string: urlString) else { return }
