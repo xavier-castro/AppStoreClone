@@ -43,20 +43,9 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchResultCell
+        
         let appResult = appResults[indexPath.item]
-        cell.appIconLabel.text = appResult.trackName
-        cell.categoryLabel.text = appResult.primaryGenreName
-        cell.ratingsLabel.text = "Rating: \(appResult.averageUserRating ?? 0)"
-
-        let url = URL(string: appResult.artworkUrl100)
-        cell.appIconImageView.sd_setImage(with: url)
-        cell.screenshot1ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[0]))
-        if appResult.screenshotUrls.count > 1 {
-            cell.screenshot2ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[1]))
-        }
-        if appResult.screenshotUrls.count > 2 {
-            cell.screenshot3ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[2]))
-        }
+        cell.appResult = appResult
         return cell
     }
     
