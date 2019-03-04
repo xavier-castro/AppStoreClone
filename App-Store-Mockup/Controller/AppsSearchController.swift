@@ -15,12 +15,23 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
 
     fileprivate let searchController = UISearchController(searchResultsController: nil)
 
+    fileprivate let enterSearchTermLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Please enter search term above..."
+        label.textColor = UIColor(white: 0.7, alpha: 1)
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 22)
+        return label
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
-        fetchITunesApps()
+        collectionView.addSubview(enterSearchTermLabel)
+        enterSearchTermLabel.fillSuperview(padding: .init(top: 50, left: 50, bottom: 0, right: 50))
         setupSearchBar()
+        // fetchITunesApps()
     }
 
     // Typical way to set up search bar in new iOS
@@ -32,14 +43,22 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         searchController.searchBar.delegate = self // Notified when text is being put
     }
 
+    var timer: Timer?
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
-        Service.shared.fetchApps(searchTerm: searchText) { (res, err) in
-            self.appResults = res
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+
+        // Introduce some delay before performing a search
+        // This is called "throttling the search"
+        timer?.invalidate() // Makes it fire the search term just once after 0.5
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
+            // This will actually fire my search
+            Service.shared.fetchApps(searchTerm: searchText) { (res, err) in
+                self.appResults = res
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
             }
-        }
+        })
     }
 
     fileprivate var appResults = [Result]()
@@ -70,6 +89,7 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        enterSearchTermLabel.isHidden = appResults.count != 0
         return appResults.count
     }
 
