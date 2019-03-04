@@ -24,6 +24,8 @@
 		9665FC29222DB0D1003EE586 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC28222DB0D1003EE586 /* BaseListController.swift */; };
 		9665FC2E222DB286003EE586 /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC2D222DB286003EE586 /* AppsGroupCell.swift */; };
 		9665FC30222DB4A9003EE586 /* AppsHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC2F222DB4A9003EE586 /* AppsHorizontalController.swift */; };
+		9665FC32222DBD43003EE586 /* AppRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC31222DBD43003EE586 /* AppRowCell.swift */; };
+		9665FC34222DBE5F003EE586 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC33222DBE5F003EE586 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		9665FC28222DB0D1003EE586 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		9665FC2D222DB286003EE586 /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
 		9665FC2F222DB4A9003EE586 /* AppsHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalController.swift; sourceTree = "<group>"; };
+		9665FC31222DBD43003EE586 /* AppRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRowCell.swift; sourceTree = "<group>"; };
+		9665FC33222DBE5F003EE586 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FFEA584C0E133EE17A507822 /* Pods-App-Store-Mockup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Store-Mockup.release.xcconfig"; path = "Target Support Files/Pods-App-Store-Mockup/Pods-App-Store-Mockup.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +160,7 @@
 			children = (
 				962A8868222BB2AE002599B6 /* UIView+Layout.swift */,
 				962A886A222BB709002599B6 /* VerticalStackView.swift */,
+				9665FC33222DBE5F003EE586 /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				9665FC2D222DB286003EE586 /* AppsGroupCell.swift */,
+				9665FC31222DBD43003EE586 /* AppRowCell.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -319,9 +325,11 @@
 				9665FC27222DAFE7003EE586 /* AppsController.swift in Sources */,
 				962A8869222BB2AE002599B6 /* UIView+Layout.swift in Sources */,
 				9665FC29222DB0D1003EE586 /* BaseListController.swift in Sources */,
+				9665FC32222DBD43003EE586 /* AppRowCell.swift in Sources */,
 				962A8860222B950D002599B6 /* BaseTabBarController.swift in Sources */,
 				9665FC2E222DB286003EE586 /* AppsGroupCell.swift in Sources */,
 				9613FF80222C8B8D00E9E748 /* Service.swift in Sources */,
+				9665FC34222DBE5F003EE586 /* Extensions.swift in Sources */,
 				962A8863222B9DA2002599B6 /* AppsSearchController.swift in Sources */,
 				962A8866222BA0B5002599B6 /* SearchResultCell.swift in Sources */,
 				9665FC30222DB4A9003EE586 /* AppsHorizontalController.swift in Sources */,
