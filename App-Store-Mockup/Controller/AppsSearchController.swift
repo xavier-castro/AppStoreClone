@@ -13,11 +13,19 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
 
     fileprivate let cellId = "cellId"
 
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
         fetchITunesApps()
+        setupSearchBar()
+    }
+
+    fileprivate func setupSearchBar() {
+        navigationItem.searchController = self.searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
     fileprivate var appResults = [Result]()
@@ -43,9 +51,7 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchResultCell
-        
-        let appResult = appResults[indexPath.item]
-        cell.appResult = appResult
+        cell.appResult = appResults[indexPath.item]
         return cell
     }
     
