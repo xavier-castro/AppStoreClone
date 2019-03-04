@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class AppsSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class AppsSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     fileprivate let cellId = "cellId"
 
@@ -23,15 +23,29 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         setupSearchBar()
     }
 
+    // Typical way to set up search bar in new iOS
     fileprivate func setupSearchBar() {
+        definesPresentationContext = true
         navigationItem.searchController = self.searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self // Notified when text is being put
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        Service.shared.fetchApps(searchTerm: searchText) { (res, err) in
+            self.appResults = res
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
 
     fileprivate var appResults = [Result]()
 
     fileprivate func fetchITunesApps() {
-        Service.shared.fetchApps { (results, error) in
+        Service.shared.fetchApps(searchTerm: "") { (results, error) in
             if let error = error {
                 print("Failed to fetch apps:", error)
                 return
