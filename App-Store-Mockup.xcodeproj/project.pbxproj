@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9613FF7D222BD8C400E9E748 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613FF7C222BD8C400E9E748 /* SearchResult.swift */; };
+		9613FF80222C8B8D00E9E748 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613FF7F222C8B8D00E9E748 /* Service.swift */; };
 		962A884E222B9439002599B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A884D222B9439002599B6 /* AppDelegate.swift */; };
 		962A8850222B9439002599B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A884F222B9439002599B6 /* ViewController.swift */; };
 		962A8853222B9439002599B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962A8851222B9439002599B6 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		9613FF7C222BD8C400E9E748 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		9613FF7F222C8B8D00E9E748 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		962A884A222B9439002599B6 /* App-Store-Mockup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "App-Store-Mockup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		962A884D222B9439002599B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		962A884F222B9439002599B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9613FF7E222C8B7C00E9E748 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9613FF7F222C8B8D00E9E748 /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		962A8841222B9439002599B6 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +84,7 @@
 		962A884C222B9439002599B6 /* App-Store-Mockup */ = {
 			isa = PBXGroup;
 			children = (
+				9613FF7E222C8B7C00E9E748 /* Service */,
 				9613FF7B222BD8B000E9E748 /* Model */,
 				962A8867222BB291002599B6 /* Helpers */,
 				962A8864222BA094002599B6 /* Views */,
@@ -190,6 +201,7 @@
 				9613FF7D222BD8C400E9E748 /* SearchResult.swift in Sources */,
 				962A8869222BB2AE002599B6 /* UIView+Layout.swift in Sources */,
 				962A8860222B950D002599B6 /* BaseTabBarController.swift in Sources */,
+				9613FF80222C8B8D00E9E748 /* Service.swift in Sources */,
 				962A8863222B9DA2002599B6 /* AppsSearchController.swift in Sources */,
 				962A8866222BA0B5002599B6 /* SearchResultCell.swift in Sources */,
 				962A886B222BB709002599B6 /* VerticalStackView.swift in Sources */,
