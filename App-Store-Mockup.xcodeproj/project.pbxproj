@@ -20,6 +20,8 @@
 		962A8866222BA0B5002599B6 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A8865222BA0B5002599B6 /* SearchResultCell.swift */; };
 		962A8869222BB2AE002599B6 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A8868222BB2AE002599B6 /* UIView+Layout.swift */; };
 		962A886B222BB709002599B6 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A886A222BB709002599B6 /* VerticalStackView.swift */; };
+		9665FC27222DAFE7003EE586 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC26222DAFE7003EE586 /* AppsController.swift */; };
+		9665FC29222DB0D1003EE586 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC28222DB0D1003EE586 /* BaseListController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		962A8865222BA0B5002599B6 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		962A8868222BB2AE002599B6 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		962A886A222BB709002599B6 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
+		9665FC26222DAFE7003EE586 /* AppsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsController.swift; sourceTree = "<group>"; };
+		9665FC28222DB0D1003EE586 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		FFEA584C0E133EE17A507822 /* Pods-App-Store-Mockup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Store-Mockup.release.xcconfig"; path = "Target Support Files/Pods-App-Store-Mockup/Pods-App-Store-Mockup.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,7 +64,6 @@
 				5368CC62045761B5067559B2 /* Pods-App-Store-Mockup.debug.xcconfig */,
 				FFEA584C0E133EE17A507822 /* Pods-App-Store-Mockup.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -127,8 +130,10 @@
 		962A8861222B9D72002599B6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9665FC25222DAFD8003EE586 /* Apps */,
 				962A885F222B950D002599B6 /* BaseTabBarController.swift */,
 				962A8862222B9DA2002599B6 /* AppsSearchController.swift */,
+				9665FC28222DB0D1003EE586 /* BaseListController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -148,6 +153,14 @@
 				962A886A222BB709002599B6 /* VerticalStackView.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9665FC25222DAFD8003EE586 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				9665FC26222DAFE7003EE586 /* AppsController.swift */,
+			);
+			path = Apps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,7 +286,9 @@
 				962A8850222B9439002599B6 /* ViewController.swift in Sources */,
 				962A884E222B9439002599B6 /* AppDelegate.swift in Sources */,
 				9613FF7D222BD8C400E9E748 /* SearchResult.swift in Sources */,
+				9665FC27222DAFE7003EE586 /* AppsController.swift in Sources */,
 				962A8869222BB2AE002599B6 /* UIView+Layout.swift in Sources */,
+				9665FC29222DB0D1003EE586 /* BaseListController.swift in Sources */,
 				962A8860222B950D002599B6 /* BaseTabBarController.swift in Sources */,
 				9613FF80222C8B8D00E9E748 /* Service.swift in Sources */,
 				962A8863222B9DA2002599B6 /* AppsSearchController.swift in Sources */,
