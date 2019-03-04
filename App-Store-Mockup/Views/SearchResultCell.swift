@@ -16,6 +16,7 @@ class SearchResultCell: UICollectionViewCell {
         iv.widthAnchor.constraint(equalToConstant: 64).isActive = true
         iv.heightAnchor.constraint(equalToConstant: 64).isActive = true
         iv.layer.cornerRadius = 12
+        iv.clipsToBounds = true // Shaves off the edges on app icons
         return iv
     }()
 
@@ -53,10 +54,14 @@ class SearchResultCell: UICollectionViewCell {
     lazy var screenshot2ImageView = self.createScreenshotImageView()
     lazy var screenshot3ImageView = self.createScreenshotImageView()
 
-
     func createScreenshotImageView() -> UIImageView {
         let imageView = UIImageView()
         imageView.backgroundColor = .blue
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }
 
