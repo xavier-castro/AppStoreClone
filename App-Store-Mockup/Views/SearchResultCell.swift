@@ -10,7 +10,7 @@ import UIKit
 
 class SearchResultCell: UICollectionViewCell {
 
-    let imageView: UIImageView = {
+    let appIconImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .red
         iv.widthAnchor.constraint(equalToConstant: 64).isActive = true
@@ -63,7 +63,7 @@ class SearchResultCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        let infoTopStackView = UIStackView(arrangedSubviews: [imageView, VerticalStackView(arrangedSubviews: [appIconLabel, categoryLabel, ratingsLabel]), getButton])
+        let infoTopStackView = UIStackView(arrangedSubviews: [appIconImageView, VerticalStackView(arrangedSubviews: [appIconLabel, categoryLabel, ratingsLabel]), getButton])
         infoTopStackView.spacing = 12
         infoTopStackView.alignment = .center
         infoTopStackView.fillSuperview(padding: .init(top: 16, left: 16, bottom: 16, right: 16))
