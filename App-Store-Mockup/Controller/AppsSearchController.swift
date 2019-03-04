@@ -51,11 +51,15 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         let url = URL(string: appResult.artworkUrl100)
         cell.appIconImageView.sd_setImage(with: url)
         cell.screenshot1ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[0]))
-        cell.screenshot2ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[1]))
-        cell.screenshot3ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[2]))
+        if appResult.screenshotUrls.count > 1 {
+            cell.screenshot2ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[1]))
+        }
+        if appResult.screenshotUrls.count > 2 {
+            cell.screenshot3ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[2]))
+        }
         return cell
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return appResults.count
     }
