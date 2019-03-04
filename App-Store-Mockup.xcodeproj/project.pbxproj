@@ -23,6 +23,7 @@
 		9665FC27222DAFE7003EE586 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC26222DAFE7003EE586 /* AppsController.swift */; };
 		9665FC29222DB0D1003EE586 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC28222DB0D1003EE586 /* BaseListController.swift */; };
 		9665FC2E222DB286003EE586 /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC2D222DB286003EE586 /* AppsGroupCell.swift */; };
+		9665FC30222DB4A9003EE586 /* AppsHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC2F222DB4A9003EE586 /* AppsHorizontalController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		9665FC26222DAFE7003EE586 /* AppsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsController.swift; sourceTree = "<group>"; };
 		9665FC28222DB0D1003EE586 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		9665FC2D222DB286003EE586 /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
+		9665FC2F222DB4A9003EE586 /* AppsHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalController.swift; sourceTree = "<group>"; };
 		FFEA584C0E133EE17A507822 /* Pods-App-Store-Mockup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Store-Mockup.release.xcconfig"; path = "Target Support Files/Pods-App-Store-Mockup/Pods-App-Store-Mockup.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				9665FC26222DAFE7003EE586 /* AppsController.swift */,
+				9665FC2F222DB4A9003EE586 /* AppsHorizontalController.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				9613FF80222C8B8D00E9E748 /* Service.swift in Sources */,
 				962A8863222B9DA2002599B6 /* AppsSearchController.swift in Sources */,
 				962A8866222BA0B5002599B6 /* SearchResultCell.swift in Sources */,
+				9665FC30222DB4A9003EE586 /* AppsHorizontalController.swift in Sources */,
 				962A886B222BB709002599B6 /* VerticalStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
