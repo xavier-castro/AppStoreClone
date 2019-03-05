@@ -24,6 +24,13 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         return label
     }()
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appDetailController = AppDetailController()
+        let appId = appResults[indexPath.item].trackId
+        appDetailController.appId = String(appId)
+        navigationController?.pushViewController(appDetailController, animated: true)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
