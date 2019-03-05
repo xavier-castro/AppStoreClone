@@ -31,6 +31,8 @@
 		964C7A3B222EEEC4005F5C95 /* ReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964C7A3A222EEEC4005F5C95 /* ReviewsController.swift */; };
 		964C7A3D222EEFFE005F5C95 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964C7A3C222EEFFE005F5C95 /* ReviewCell.swift */; };
 		964C7A3F222F0CA3005F5C95 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964C7A3E222F0CA3005F5C95 /* Reviews.swift */; };
+		964C7A42222F2B4F005F5C95 /* TodayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964C7A41222F2B4F005F5C95 /* TodayController.swift */; };
+		964C7A45222F2BBB005F5C95 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964C7A44222F2BBB005F5C95 /* TodayCell.swift */; };
 		9665FC27222DAFE7003EE586 /* AppsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC26222DAFE7003EE586 /* AppsPageController.swift */; };
 		9665FC29222DB0D1003EE586 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC28222DB0D1003EE586 /* BaseListController.swift */; };
 		9665FC2E222DB286003EE586 /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC2D222DB286003EE586 /* AppsGroupCell.swift */; };
@@ -71,6 +73,8 @@
 		964C7A3A222EEEC4005F5C95 /* ReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsController.swift; sourceTree = "<group>"; };
 		964C7A3C222EEFFE005F5C95 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		964C7A3E222F0CA3005F5C95 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
+		964C7A41222F2B4F005F5C95 /* TodayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayController.swift; sourceTree = "<group>"; };
+		964C7A44222F2BBB005F5C95 /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
 		9665FC26222DAFE7003EE586 /* AppsPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageController.swift; sourceTree = "<group>"; };
 		9665FC28222DB0D1003EE586 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		9665FC2D222DB286003EE586 /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 		962A8861222B9D72002599B6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				964C7A40222F2B43005F5C95 /* Today */,
 				9665FC25222DAFD8003EE586 /* Apps */,
 				9665FC2A222DB18B003EE586 /* Search */,
 				962A885F222B950D002599B6 /* BaseTabBarController.swift */,
@@ -204,6 +209,7 @@
 		962A8864222BA094002599B6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				964C7A43222F2BB2005F5C95 /* Today */,
 				9665FC2B222DB264003EE586 /* Apps */,
 				9665FC2C222DB269003EE586 /* Search */,
 			);
@@ -219,6 +225,22 @@
 				96258FD0222E3D2E002951FE /* BetterSnappingLayout.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		964C7A40222F2B43005F5C95 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				964C7A41222F2B4F005F5C95 /* TodayController.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		964C7A43222F2BB2005F5C95 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				964C7A44222F2BBB005F5C95 /* TodayCell.swift */,
+			);
+			path = Today;
 			sourceTree = "<group>";
 		};
 		9665FC25222DAFD8003EE586 /* Apps */ = {
@@ -391,6 +413,7 @@
 				9665FC3A222DDFD0003EE586 /* AppsHeaderCell.swift in Sources */,
 				962A8869222BB2AE002599B6 /* UIView+Layout.swift in Sources */,
 				964C7A39222EED32005F5C95 /* ReviewRowCell.swift in Sources */,
+				964C7A45222F2BBB005F5C95 /* TodayCell.swift in Sources */,
 				9665FC29222DB0D1003EE586 /* BaseListController.swift in Sources */,
 				960815EE222E52CB000005A0 /* AppDetailCell.swift in Sources */,
 				9665FC32222DBD43003EE586 /* AppRowCell.swift in Sources */,
@@ -402,6 +425,7 @@
 				960815F0222E5D98000005A0 /* PreviewCell.swift in Sources */,
 				964C7A3B222EEEC4005F5C95 /* ReviewsController.swift in Sources */,
 				964C7A3F222F0CA3005F5C95 /* Reviews.swift in Sources */,
+				964C7A42222F2B4F005F5C95 /* TodayController.swift in Sources */,
 				9665FC34222DBE5F003EE586 /* Extensions.swift in Sources */,
 				962A8863222B9DA2002599B6 /* AppsSearchController.swift in Sources */,
 				962A8866222BA0B5002599B6 /* SearchResultCell.swift in Sources */,
