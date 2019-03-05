@@ -11,6 +11,8 @@
 		9613FF7D222BD8C400E9E748 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613FF7C222BD8C400E9E748 /* SearchResult.swift */; };
 		9613FF80222C8B8D00E9E748 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613FF7F222C8B8D00E9E748 /* Service.swift */; };
 		96258FCD222E2B97002951FE /* SocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96258FCC222E2B97002951FE /* SocialApp.swift */; };
+		96258FCF222E39DE002951FE /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96258FCE222E39DE002951FE /* HorizontalSnappingController.swift */; };
+		96258FD1222E3D2E002951FE /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96258FD0222E3D2E002951FE /* BetterSnappingLayout.swift */; };
 		962A884E222B9439002599B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A884D222B9439002599B6 /* AppDelegate.swift */; };
 		962A8850222B9439002599B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A884F222B9439002599B6 /* ViewController.swift */; };
 		962A8853222B9439002599B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962A8851222B9439002599B6 /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 		9613FF7C222BD8C400E9E748 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		9613FF7F222C8B8D00E9E748 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		96258FCC222E2B97002951FE /* SocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialApp.swift; sourceTree = "<group>"; };
+		96258FCE222E39DE002951FE /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
+		96258FD0222E3D2E002951FE /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
 		962A884A222B9439002599B6 /* App-Store-Mockup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "App-Store-Mockup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		962A884D222B9439002599B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		962A884F222B9439002599B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 				9665FC2A222DB18B003EE586 /* Search */,
 				962A885F222B950D002599B6 /* BaseTabBarController.swift */,
 				9665FC28222DB0D1003EE586 /* BaseListController.swift */,
+				96258FCE222E39DE002951FE /* HorizontalSnappingController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				962A8868222BB2AE002599B6 /* UIView+Layout.swift */,
 				962A886A222BB709002599B6 /* VerticalStackView.swift */,
 				9665FC33222DBE5F003EE586 /* Extensions.swift */,
+				96258FD0222E3D2E002951FE /* BetterSnappingLayout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -335,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				962A8850222B9439002599B6 /* ViewController.swift in Sources */,
+				96258FD1222E3D2E002951FE /* BetterSnappingLayout.swift in Sources */,
 				962A884E222B9439002599B6 /* AppDelegate.swift in Sources */,
 				96258FCD222E2B97002951FE /* SocialApp.swift in Sources */,
 				9613FF7D222BD8C400E9E748 /* SearchResult.swift in Sources */,
@@ -351,6 +358,7 @@
 				9665FC34222DBE5F003EE586 /* Extensions.swift in Sources */,
 				962A8863222B9DA2002599B6 /* AppsSearchController.swift in Sources */,
 				962A8866222BA0B5002599B6 /* SearchResultCell.swift in Sources */,
+				96258FCF222E39DE002951FE /* HorizontalSnappingController.swift in Sources */,
 				9665FC30222DB4A9003EE586 /* AppsHorizontalController.swift in Sources */,
 				962A886B222BB709002599B6 /* VerticalStackView.swift in Sources */,
 				9665FC38222DDDD3003EE586 /* AppsHeaderHorizontalController.swift in Sources */,
