@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		57518EF0FCCBB81B298FB91F /* Pods_App_Store_Mockup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB673478750B272C259C22F /* Pods_App_Store_Mockup.framework */; };
 		960815EB222E4FAA000005A0 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960815EA222E4FAA000005A0 /* AppDetailController.swift */; };
+		960815EE222E52CB000005A0 /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960815ED222E52CB000005A0 /* AppDetailCell.swift */; };
 		9613FF7D222BD8C400E9E748 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613FF7C222BD8C400E9E748 /* SearchResult.swift */; };
 		9613FF80222C8B8D00E9E748 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613FF7F222C8B8D00E9E748 /* Service.swift */; };
 		96258FCD222E2B97002951FE /* SocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96258FCC222E2B97002951FE /* SocialApp.swift */; };
@@ -40,6 +41,7 @@
 		5368CC62045761B5067559B2 /* Pods-App-Store-Mockup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Store-Mockup.debug.xcconfig"; path = "Target Support Files/Pods-App-Store-Mockup/Pods-App-Store-Mockup.debug.xcconfig"; sourceTree = "<group>"; };
 		5DB673478750B272C259C22F /* Pods_App_Store_Mockup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_Store_Mockup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		960815EA222E4FAA000005A0 /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
+		960815ED222E52CB000005A0 /* AppDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
 		9613FF7C222BD8C400E9E748 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		9613FF7F222C8B8D00E9E748 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		96258FCC222E2B97002951FE /* SocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialApp.swift; sourceTree = "<group>"; };
@@ -103,6 +105,14 @@
 			isa = PBXGroup;
 			children = (
 				960815EA222E4FAA000005A0 /* AppDetailController.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		960815EC222E52B8000005A0 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				960815ED222E52CB000005A0 /* AppDetailCell.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -215,6 +225,7 @@
 		9665FC2B222DB264003EE586 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				960815EC222E52B8000005A0 /* Details */,
 				9665FC2D222DB286003EE586 /* AppsGroupCell.swift */,
 				9665FC31222DBD43003EE586 /* AppRowCell.swift */,
 				9665FC35222DC6C7003EE586 /* AppsPageHeader.swift */,
@@ -361,6 +372,7 @@
 				9665FC3A222DDFD0003EE586 /* AppsHeaderCell.swift in Sources */,
 				962A8869222BB2AE002599B6 /* UIView+Layout.swift in Sources */,
 				9665FC29222DB0D1003EE586 /* BaseListController.swift in Sources */,
+				960815EE222E52CB000005A0 /* AppDetailCell.swift in Sources */,
 				9665FC32222DBD43003EE586 /* AppRowCell.swift in Sources */,
 				962A8860222B950D002599B6 /* BaseTabBarController.swift in Sources */,
 				9665FC2E222DB286003EE586 /* AppsGroupCell.swift in Sources */,
