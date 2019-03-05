@@ -53,8 +53,7 @@ class Service {
                 let objects = try JSONDecoder().decode(Type.self, from: data!)
                 completion(objects, nil)
             } catch {
-                completion(nil, err)
-                print("Failed to decode:", err!)
+                completion(nil, error)
             }
             }.resume()
     }
