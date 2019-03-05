@@ -21,6 +21,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         fetchData()
     }
 
+    var socialApps = [SocialApp]()
     var groups = [AppGroup]()
 
     fileprivate func fetchData() {
@@ -53,6 +54,14 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
             group3 = appGroup
         }
 
+        dispatchGroup.enter()
+        Service.shared.fetchSocialApps { (apps, err) in
+            // You should check the err
+            dispatchGroup.leave()
+            // apps?.forEach({print($0.name)})
+            self.socialApps = apps ?? []
+        }
+
         // Completion
         dispatchGroup.notify(queue: .main) {
             print("Completed your dispatch group tasks...")
@@ -71,12 +80,14 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! AppsPageHeader
+        header.appHeaderHorizontalController.socialApps = self.socialApps
+        header.appHeaderHorizontalController.collectionView.reloadData()
         return header
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 0)
+        return CGSize(width: view.frame.width, height: 300)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -10,6 +10,7 @@
 		57518EF0FCCBB81B298FB91F /* Pods_App_Store_Mockup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB673478750B272C259C22F /* Pods_App_Store_Mockup.framework */; };
 		9613FF7D222BD8C400E9E748 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613FF7C222BD8C400E9E748 /* SearchResult.swift */; };
 		9613FF80222C8B8D00E9E748 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613FF7F222C8B8D00E9E748 /* Service.swift */; };
+		96258FCD222E2B97002951FE /* SocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96258FCC222E2B97002951FE /* SocialApp.swift */; };
 		962A884E222B9439002599B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A884D222B9439002599B6 /* AppDelegate.swift */; };
 		962A8850222B9439002599B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A884F222B9439002599B6 /* ViewController.swift */; };
 		962A8853222B9439002599B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962A8851222B9439002599B6 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		5DB673478750B272C259C22F /* Pods_App_Store_Mockup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_Store_Mockup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9613FF7C222BD8C400E9E748 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		9613FF7F222C8B8D00E9E748 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		96258FCC222E2B97002951FE /* SocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialApp.swift; sourceTree = "<group>"; };
 		962A884A222B9439002599B6 /* App-Store-Mockup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "App-Store-Mockup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		962A884D222B9439002599B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		962A884F222B9439002599B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				9613FF7C222BD8C400E9E748 /* SearchResult.swift */,
 				9665FC3B222DFAE5003EE586 /* AppGroup.swift */,
+				96258FCC222E2B97002951FE /* SocialApp.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			files = (
 				962A8850222B9439002599B6 /* ViewController.swift in Sources */,
 				962A884E222B9439002599B6 /* AppDelegate.swift in Sources */,
+				96258FCD222E2B97002951FE /* SocialApp.swift in Sources */,
 				9613FF7D222BD8C400E9E748 /* SearchResult.swift in Sources */,
 				9665FC3C222DFAE5003EE586 /* AppGroup.swift in Sources */,
 				9665FC27222DAFE7003EE586 /* AppsPageController.swift in Sources */,
