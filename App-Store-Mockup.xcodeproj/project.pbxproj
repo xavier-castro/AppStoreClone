@@ -29,6 +29,7 @@
 		9665FC36222DC6C7003EE586 /* AppsPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC35222DC6C7003EE586 /* AppsPageHeader.swift */; };
 		9665FC38222DDDD3003EE586 /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC37222DDDD3003EE586 /* AppsHeaderHorizontalController.swift */; };
 		9665FC3A222DDFD0003EE586 /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC39222DDFD0003EE586 /* AppsHeaderCell.swift */; };
+		9665FC3C222DFAE5003EE586 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC3B222DFAE5003EE586 /* AppGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		9665FC35222DC6C7003EE586 /* AppsPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageHeader.swift; sourceTree = "<group>"; };
 		9665FC37222DDDD3003EE586 /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
 		9665FC39222DDFD0003EE586 /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
+		9665FC3B222DFAE5003EE586 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		FFEA584C0E133EE17A507822 /* Pods-App-Store-Mockup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Store-Mockup.release.xcconfig"; path = "Target Support Files/Pods-App-Store-Mockup/Pods-App-Store-Mockup.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				9613FF7C222BD8C400E9E748 /* SearchResult.swift */,
+				9665FC3B222DFAE5003EE586 /* AppGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				962A8850222B9439002599B6 /* ViewController.swift in Sources */,
 				962A884E222B9439002599B6 /* AppDelegate.swift in Sources */,
 				9613FF7D222BD8C400E9E748 /* SearchResult.swift in Sources */,
+				9665FC3C222DFAE5003EE586 /* AppGroup.swift in Sources */,
 				9665FC27222DAFE7003EE586 /* AppsPageController.swift in Sources */,
 				9665FC3A222DDFD0003EE586 /* AppsHeaderCell.swift in Sources */,
 				962A8869222BB2AE002599B6 /* UIView+Layout.swift in Sources */,
