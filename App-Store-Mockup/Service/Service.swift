@@ -46,11 +46,10 @@ class Service {
             do {
                 // Success
                 let appGroup = try JSONDecoder().decode(AppGroup.self, from: data!)
-                appGroup.feed.results.forEach({print($0.artistName)})
                 completion(appGroup, nil)
             } catch {
                 completion(nil, err)
-                print("Failed to decode:", err)
+                print("Failed to decode:", err!)
             }
 
         }.resume()
