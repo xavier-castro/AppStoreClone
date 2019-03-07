@@ -30,6 +30,9 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         let appFullscreenController = AppFullScreenController()
+        appFullscreenController.dismissHandler = {
+            self.handleRemoveRedView()
+        }
 
         let redView = appFullscreenController.view!
         redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
@@ -82,7 +85,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 
     var startingFrame: CGRect?
 
-    @objc func handleRemoveRedView(gesture: UITapGestureRecognizer) {
+    @objc func handleRemoveRedView() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
 
             // This brings your table view back into the proper position with smooth animation
@@ -100,7 +103,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 
             self.tabBarController?.tabBar.transform = .identity
         }, completion: { _ in
-            gesture.view?.removeFromSuperview()
+            self.appFullScreenController.view.removeFromSuperview()
             self.appFullScreenController.removeFromParent()
         })
     }
