@@ -45,6 +45,7 @@
 		9665FC3C222DFAE5003EE586 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665FC3B222DFAE5003EE586 /* AppGroup.swift */; };
 		968DCE422230866800CC6D00 /* AppFullscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968DCE412230866800CC6D00 /* AppFullscreenController.swift */; };
 		968DCE442230887500CC6D00 /* AppFullscreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968DCE432230887500CC6D00 /* AppFullscreenDescriptionCell.swift */; };
+		968DCE4622309B5D00CC6D00 /* AppFullscreenHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968DCE4522309B5D00CC6D00 /* AppFullscreenHeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		9665FC3B222DFAE5003EE586 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		968DCE412230866800CC6D00 /* AppFullscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenController.swift; sourceTree = "<group>"; };
 		968DCE432230887500CC6D00 /* AppFullscreenDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenDescriptionCell.swift; sourceTree = "<group>"; };
+		968DCE4522309B5D00CC6D00 /* AppFullscreenHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenHeaderCell.swift; sourceTree = "<group>"; };
 		FFEA584C0E133EE17A507822 /* Pods-App-Store-Mockup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Store-Mockup.release.xcconfig"; path = "Target Support Files/Pods-App-Store-Mockup/Pods-App-Store-Mockup.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -245,6 +247,7 @@
 			children = (
 				964C7A44222F2BBB005F5C95 /* TodayCell.swift */,
 				968DCE432230887500CC6D00 /* AppFullscreenDescriptionCell.swift */,
+				968DCE4522309B5D00CC6D00 /* AppFullscreenHeaderCell.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				962A8863222B9DA2002599B6 /* AppsSearchController.swift in Sources */,
 				962A8866222BA0B5002599B6 /* SearchResultCell.swift in Sources */,
 				960815EB222E4FAA000005A0 /* AppDetailController.swift in Sources */,
+				968DCE4622309B5D00CC6D00 /* AppFullscreenHeaderCell.swift in Sources */,
 				96258FCF222E39DE002951FE /* HorizontalSnappingController.swift in Sources */,
 				9665FC30222DB4A9003EE586 /* AppsHorizontalController.swift in Sources */,
 				962A886B222BB709002599B6 /* VerticalStackView.swift in Sources */,
