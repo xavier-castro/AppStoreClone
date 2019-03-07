@@ -129,14 +129,8 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 
         let cellId = items[indexPath.item].cellType.rawValue
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-
-        if let cell = cell as? TodayCell {
-            cell.todayItem = items[indexPath.item]
-        } else if let cell = cell as? TodayMultipleAppCell {
-            cell.todayItem = items[indexPath.item]
-        }
-
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseTodayCell
+        cell.todayItem = items[indexPath.item]
         return cell
 
         //        // Multiple app cell
