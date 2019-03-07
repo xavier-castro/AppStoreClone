@@ -46,6 +46,7 @@
 		968DCE422230866800CC6D00 /* AppFullscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968DCE412230866800CC6D00 /* AppFullscreenController.swift */; };
 		968DCE442230887500CC6D00 /* AppFullscreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968DCE432230887500CC6D00 /* AppFullscreenDescriptionCell.swift */; };
 		968DCE4622309B5D00CC6D00 /* AppFullscreenHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968DCE4522309B5D00CC6D00 /* AppFullscreenHeaderCell.swift */; };
+		968DCE482230A93B00CC6D00 /* TodayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968DCE472230A93B00CC6D00 /* TodayItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		968DCE412230866800CC6D00 /* AppFullscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenController.swift; sourceTree = "<group>"; };
 		968DCE432230887500CC6D00 /* AppFullscreenDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenDescriptionCell.swift; sourceTree = "<group>"; };
 		968DCE4522309B5D00CC6D00 /* AppFullscreenHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenHeaderCell.swift; sourceTree = "<group>"; };
+		968DCE472230A93B00CC6D00 /* TodayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayItem.swift; sourceTree = "<group>"; };
 		FFEA584C0E133EE17A507822 /* Pods-App-Store-Mockup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Store-Mockup.release.xcconfig"; path = "Target Support Files/Pods-App-Store-Mockup/Pods-App-Store-Mockup.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +153,7 @@
 				9665FC3B222DFAE5003EE586 /* AppGroup.swift */,
 				96258FCC222E2B97002951FE /* SocialApp.swift */,
 				964C7A3E222F0CA3005F5C95 /* Reviews.swift */,
+				968DCE472230A93B00CC6D00 /* TodayItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				9665FC32222DBD43003EE586 /* AppRowCell.swift in Sources */,
 				960815F2222E5F10000005A0 /* PreviewScreenshotsController.swift in Sources */,
 				962A8860222B950D002599B6 /* BaseTabBarController.swift in Sources */,
+				968DCE482230A93B00CC6D00 /* TodayItem.swift in Sources */,
 				9665FC2E222DB286003EE586 /* AppsGroupCell.swift in Sources */,
 				968DCE442230887500CC6D00 /* AppFullscreenDescriptionCell.swift in Sources */,
 				9665FC36222DC6C7003EE586 /* AppsPageHeader.swift in Sources */,

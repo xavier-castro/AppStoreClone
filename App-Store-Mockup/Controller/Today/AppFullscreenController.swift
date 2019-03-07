@@ -11,6 +11,7 @@ import UIKit
 class AppFullScreenController: UITableViewController {
 
     var dismissHandler: (() ->())?
+    var todayItem: TodayItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class AppFullScreenController: UITableViewController {
         if indexPath.item == 0 {
             let headerCell = AppFullscreenHeaderCell()
             headerCell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
+            headerCell.todayCell.todayItem = todayItem
             return headerCell
         }
 
@@ -39,7 +41,7 @@ class AppFullScreenController: UITableViewController {
     }
 
     // TODO: Finish
-    @objc func handleDismiss(button: UIButton) {
+    @objc fileprivate func handleDismiss(button: UIButton) {
         button.isHidden = true
         dismissHandler?()
     }

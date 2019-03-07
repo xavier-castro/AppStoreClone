@@ -12,6 +12,11 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 
     let cellId = "cellId"
 
+    let items = [
+        TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and the apps you need to intelligently organize your life the right way.", backgroundColor: .white),
+        TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9891493917, green: 0.9669085145, blue: 0.7274525762, alpha: 1))
+    ]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,12 +35,12 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         let appFullscreenController = AppFullScreenController()
+        appFullscreenController.todayItem = items[indexPath.row]
         appFullscreenController.dismissHandler = {
             self.handleRemoveRedView()
         }
 
         let fullscreenView = appFullscreenController.view!
-        fullscreenView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
         view.addSubview(fullscreenView)
 
         addChild(appFullscreenController) // Need addChild so you can see header in tableViewController
@@ -109,11 +114,12 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 2
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TodayCell
+        cell.todayItem = items[indexPath.item]
         return cell
     }
 

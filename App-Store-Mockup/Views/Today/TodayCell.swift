@@ -10,6 +10,15 @@ import UIKit
 
 class TodayCell: UICollectionViewCell {
 
+    var todayItem: TodayItem! {
+        didSet {
+            categoryLabel.text = todayItem.category
+            titleLabel.text = todayItem.title
+            imageView.image = todayItem.image
+            descriptionLabel.text = todayItem.description
+        }
+    }
+
     let categoryLabel = UILabel(text: "LIFE HACK", font: .boldSystemFont(ofSize: 20))
 
     let titleLabel = UILabel(text: "Utilizing your Time", font: .boldSystemFont(ofSize: 28))
@@ -22,6 +31,7 @@ class TodayCell: UICollectionViewCell {
         super.init(frame: frame)
 
         backgroundColor = .white
+        clipsToBounds = true // Clip everything into the boundaries of the cell without extending out
         layer.cornerRadius = 16
 
         addSubview(imageView)
