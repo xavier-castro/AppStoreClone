@@ -10,22 +10,27 @@ import UIKit
 
 class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 
-    let cellId = "cellId"
-
     let items = [
-        TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and the apps you need to intelligently organize your life the right way.", backgroundColor: .white),
-        TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9891493917, green: 0.9669085145, blue: 0.7274525762, alpha: 1))
+        TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single),
+
+        TodayItem.init(category: "THE DAILY LIST", title: "Test-Drive These CarPlay Apps", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple),
+
+        TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838578105, green: 0.9588007331, blue: 0.7274674177, alpha: 1), cellType: .single)
     ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.isNavigationBarHidden = true
-        collectionView.backgroundColor = #colorLiteral(red: 0.9555082917, green: 0.9493837953, blue: 0.9556146264, alpha: 1)
-        collectionView.register(TodayCell.self, forCellWithReuseIdentifier: cellId)
+
+        collectionView.backgroundColor = #colorLiteral(red: 0.948936522, green: 0.9490727782, blue: 0.9489068389, alpha: 1)
+
+        collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
+
+        collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
     }
 
-    var appFullScreenController: AppFullScreenController!
+    var appFullscreenController: AppFullscreenController!
 
     var topConstraint: NSLayoutConstraint?
     var leadingConstraint: NSLayoutConstraint?
@@ -34,30 +39,28 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let appFullscreenController = AppFullScreenController()
+        let appFullscreenController = AppFullscreenController()
         appFullscreenController.todayItem = items[indexPath.row]
         appFullscreenController.dismissHandler = {
-            self.handleRemoveRedView()
+            self.handleRemoveFullscreenView()
         }
 
         let fullscreenView = appFullscreenController.view!
         view.addSubview(fullscreenView)
+        addChild(appFullscreenController)
 
-        addChild(appFullscreenController) // Need addChild so you can see header in tableViewController
+        self.appFullscreenController = appFullscreenController
 
-        self.appFullScreenController = appFullscreenController
+        self.collectionView.isUserInteractionEnabled = false
 
-        // Find out what cell you are in
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        print(cell.frame)
 
-        // Use absolute coordinates to find the acutal x, y for a cell
-        // Starting frame knows exactly where the cell is
+        // absolute coordindates of cell
         guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
 
         self.startingFrame = startingFrame
 
-        // Auto layout constraint animations
+        // auto layout constraint animations
         // 4 anchors
         fullscreenView.translatesAutoresizingMaskIntoConstraints = false
         topConstraint = fullscreenView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
@@ -70,9 +73,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 
         fullscreenView.layer.cornerRadius = 16
 
-        // We're using frames for animation
-        // Frames are not reliable enough for animations
-
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
 
             self.topConstraint?.constant = 0
@@ -80,25 +80,26 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             self.widthConstraint?.constant = self.view.frame.width
             self.heightConstraint?.constant = self.view.frame.height
 
-            self.view.layoutIfNeeded() // Starts animation
+            self.view.layoutIfNeeded() // starts animation
 
             self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
 
-        }, completion: nil)
+            guard let cell = appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
 
+            cell.todayCell.topConstraint.constant = 48
+            cell.layoutIfNeeded()
+
+        }, completion: nil)
     }
 
     var startingFrame: CGRect?
 
-    @objc func handleRemoveRedView() {
+    @objc func handleRemoveFullscreenView() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
 
-            // This brings your table view back into the proper position with smooth animation
-            self.appFullScreenController.tableView.contentOffset = .zero
+            self.appFullscreenController.tableView.contentOffset = .zero
 
-            // Frame code is bad, use this instead
             guard let startingFrame = self.startingFrame else { return }
-
             self.topConstraint?.constant = startingFrame.origin.y
             self.leadingConstraint?.constant = startingFrame.origin.x
             self.widthConstraint?.constant = startingFrame.width
@@ -107,24 +108,53 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             self.view.layoutIfNeeded()
 
             self.tabBarController?.tabBar.transform = .identity
+
+            guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
+
+            cell.todayCell.topConstraint.constant = 24
+            cell.layoutIfNeeded()
+
         }, completion: { _ in
-            self.appFullScreenController.view.removeFromSuperview()
-            self.appFullScreenController.removeFromParent()
+            self.appFullscreenController.view.removeFromSuperview()
+            self.appFullscreenController.removeFromParent()
+            self.collectionView.isUserInteractionEnabled = true
         })
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return items.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TodayCell
-        cell.todayItem = items[indexPath.item]
+
+        let cellId = items[indexPath.item].cellType.rawValue
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+
+        if let cell = cell as? TodayCell {
+            cell.todayItem = items[indexPath.item]
+        } else if let cell = cell as? TodayMultipleAppCell {
+            cell.todayItem = items[indexPath.item]
+        }
+
         return cell
+
+        //        // Multiple app cell
+        //        if indexPath.item == 0 {
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: todayCellId, for: indexPath) as! TodayMultipleAppCell
+        //            cell.todayItem = items[indexPath.item]
+        //            return cell
+        //        }
+        //
+        //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TodayCell
+        //        cell.todayItem = items[indexPath.item]
+        //        return cell
     }
 
+    static let cellSize: CGFloat = 500
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - 64, height: 450)
+        return .init(width: view.frame.width - 64, height: TodayController.cellSize)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -134,4 +164,5 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .init(top: 32, left: 0, bottom: 32, right: 0)
     }
+
 }

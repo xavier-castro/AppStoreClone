@@ -8,22 +8,23 @@
 
 import UIKit
 
-class AppFullScreenController: UITableViewController {
+class AppFullscreenController: UITableViewController {
 
     var dismissHandler: (() ->())?
     var todayItem: TodayItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Get rid of all lines in Table
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        let height = UIApplication.shared.statusBarFrame.height
+        tableView.contentInset = .init(top: 0, left: 0, bottom: height, right: 0)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -32,15 +33,14 @@ class AppFullScreenController: UITableViewController {
             let headerCell = AppFullscreenHeaderCell()
             headerCell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
             headerCell.todayCell.todayItem = todayItem
+            headerCell.todayCell.layer.cornerRadius = 0
             return headerCell
         }
 
         let cell = AppFullscreenDescriptionCell()
         return cell
-
     }
 
-    // TODO: Finish
     @objc fileprivate func handleDismiss(button: UIButton) {
         button.isHidden = true
         dismissHandler?()
@@ -48,9 +48,9 @@ class AppFullScreenController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 450
+            return TodayController.cellSize
         }
-        return super.tableView(tableView, heightForRowAt: indexPath) // Let table view handle height automatically for you
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
 
 }
