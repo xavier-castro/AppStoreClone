@@ -34,9 +34,9 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             self.handleRemoveRedView()
         }
 
-        let redView = appFullscreenController.view!
-        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
-        view.addSubview(redView)
+        let fullscreenView = appFullscreenController.view!
+        fullscreenView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
+        view.addSubview(fullscreenView)
 
         addChild(appFullscreenController) // Need addChild so you can see header in tableViewController
 
@@ -54,16 +54,16 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 
         // Auto layout constraint animations
         // 4 anchors
-        redView.translatesAutoresizingMaskIntoConstraints = false
-        topConstraint = redView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
-        leadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
-        widthConstraint = redView.widthAnchor.constraint(equalToConstant: startingFrame.width)
-        heightConstraint = redView.heightAnchor.constraint(equalToConstant: startingFrame.height)
+        fullscreenView.translatesAutoresizingMaskIntoConstraints = false
+        topConstraint = fullscreenView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
+        leadingConstraint = fullscreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
+        widthConstraint = fullscreenView.widthAnchor.constraint(equalToConstant: startingFrame.width)
+        heightConstraint = fullscreenView.heightAnchor.constraint(equalToConstant: startingFrame.height)
 
         [topConstraint, leadingConstraint, widthConstraint, heightConstraint].forEach({$0?.isActive = true})
         self.view.layoutIfNeeded()
 
-        redView.layer.cornerRadius = 16
+        fullscreenView.layer.cornerRadius = 16
 
         // We're using frames for animation
         // Frames are not reliable enough for animations

@@ -18,6 +18,7 @@ class AppFullScreenController: UITableViewController {
         // Get rid of all lines in Table
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
