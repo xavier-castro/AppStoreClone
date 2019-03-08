@@ -10,24 +10,62 @@ import UIKit
 
 class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 
-    let items = [
-        TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single),
+    var items = [TodayItem]()
 
-        TodayItem.init(category: "THE DAILY LIST", title: "Test-Drive These CarPlay Apps", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple),
-
-        TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838578105, green: 0.9588007331, blue: 0.7274674177, alpha: 1), cellType: .single)
-    ]
+    let activityIndicatorView: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(style: .whiteLarge)
+        aiv.color = .darkGray
+        aiv.startAnimating()
+        aiv.hidesWhenStopped = true
+        return aiv
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.centerInSuperview()
+        fetchData()
         navigationController?.isNavigationBarHidden = true
-
         collectionView.backgroundColor = #colorLiteral(red: 0.948936522, green: 0.9490727782, blue: 0.9489068389, alpha: 1)
-
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
-
         collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
+    }
+
+    fileprivate func fetchData() {
+        let dispatchGroup = DispatchGroup()
+        var topGrossingGroup: AppGroup?
+        var gamesGroup: AppGroup?
+        dispatchGroup.enter()
+        Service.shared.fetchTopGrossing { (appGroup, err) in
+            if let err = err {
+                print("Error during fetch data:", err)
+                return
+            }
+            topGrossingGroup = appGroup
+            dispatchGroup.leave()
+        }
+        // Completion block
+        dispatchGroup.enter()
+        Service.shared.fetchGames { (appGroup, err) in
+            if let err = err {
+                print("Enter during fetch data:", err)
+                return
+            }
+            gamesGroup = appGroup
+            dispatchGroup.leave()
+        }
+        dispatchGroup.notify(queue: .main) {
+            // I'll have access to top grossing and games
+            print("Finish fetching")
+            self.activityIndicatorView.stopAnimating()
+            self.items = [
+                TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838578105, green: 0.9588007331, blue: 0.7274674177, alpha: 1), cellType: .single, apps: []),
+                TodayItem.init(category: "Daily List", title: topGrossingGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: topGrossingGroup?.feed.results ?? []),
+                TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single, apps: []),
+                TodayItem.init(category: "Daily List", title: gamesGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: gamesGroup?.feed.results ?? []),
+            ]
+            self.collectionView.reloadData()
+        }
     }
 
     var appFullscreenController: AppFullscreenController!
