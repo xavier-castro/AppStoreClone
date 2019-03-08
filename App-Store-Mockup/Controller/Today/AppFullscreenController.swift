@@ -15,6 +15,7 @@ class AppFullscreenController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
