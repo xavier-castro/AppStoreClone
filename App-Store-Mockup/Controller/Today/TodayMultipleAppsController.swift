@@ -25,6 +25,12 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
     @objc func handleDismiss() {
         dismiss(animated: true)
     }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appId = self.results[indexPath.item].id
+        let appDetailController = AppDetailController(appId: appId)
+        navigationController?.pushViewController(appDetailController, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

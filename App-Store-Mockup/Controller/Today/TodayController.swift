@@ -20,6 +20,12 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         return aiv
     }()
 
+    // Fix tab bar from snapping out from the bottom
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarController?.tabBar.superview?.setNeedsLayout()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(activityIndicatorView)
@@ -80,7 +86,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         if items[indexPath.item].cellType == .multiple {
             let fullController = TodayMultipleAppsController(mode: .fullscreen)
             fullController.results = self.items[indexPath.item].apps
-            present(fullController, animated: true)
+            present(UINavigationController(rootViewController: fullController), animated: true)
             return
         }
 
@@ -119,18 +125,13 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         fullscreenView.layer.cornerRadius = 16
 
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-
             self.topConstraint?.constant = 0
             self.leadingConstraint?.constant = 0
             self.widthConstraint?.constant = self.view.frame.width
             self.heightConstraint?.constant = self.view.frame.height
-
             self.view.layoutIfNeeded() // starts animation
-
             self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
-
             guard let cell = appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
-
             cell.todayCell.topConstraint.constant = 48
             cell.layoutIfNeeded()
 
@@ -143,7 +144,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
 
             self.appFullscreenController.tableView.contentOffset = .zero
-
             guard let startingFrame = self.startingFrame else { return }
             self.topConstraint?.constant = startingFrame.origin.y
             self.leadingConstraint?.constant = startingFrame.origin.x
