@@ -51,6 +51,7 @@
 		968DCE442230887500CC6D00 /* AppFullscreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968DCE432230887500CC6D00 /* AppFullscreenDescriptionCell.swift */; };
 		968DCE4622309B5D00CC6D00 /* AppFullscreenHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968DCE4522309B5D00CC6D00 /* AppFullscreenHeaderCell.swift */; };
 		968DCE482230A93B00CC6D00 /* TodayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968DCE472230A93B00CC6D00 /* TodayItem.swift */; };
+		96B645D622322DEF002D516A /* BackEnabledNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B645D522322DEF002D516A /* BackEnabledNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 		968DCE432230887500CC6D00 /* AppFullscreenDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenDescriptionCell.swift; sourceTree = "<group>"; };
 		968DCE4522309B5D00CC6D00 /* AppFullscreenHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenHeaderCell.swift; sourceTree = "<group>"; };
 		968DCE472230A93B00CC6D00 /* TodayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayItem.swift; sourceTree = "<group>"; };
+		96B645D522322DEF002D516A /* BackEnabledNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackEnabledNavigationController.swift; sourceTree = "<group>"; };
 		FFEA584C0E133EE17A507822 /* Pods-App-Store-Mockup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Store-Mockup.release.xcconfig"; path = "Target Support Files/Pods-App-Store-Mockup/Pods-App-Store-Mockup.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,6 +252,7 @@
 				964C7A41222F2B4F005F5C95 /* TodayController.swift */,
 				968DCE412230866800CC6D00 /* AppFullscreenController.swift */,
 				9672A18A2231004500A312DB /* TodayMultipleAppsController.swift */,
+				96B645D522322DEF002D516A /* BackEnabledNavigationController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				9613FF80222C8B8D00E9E748 /* Service.swift in Sources */,
 				960815F0222E5D98000005A0 /* PreviewCell.swift in Sources */,
 				964C7A3B222EEEC4005F5C95 /* ReviewsController.swift in Sources */,
+				96B645D622322DEF002D516A /* BackEnabledNavigationController.swift in Sources */,
 				964C7A3F222F0CA3005F5C95 /* Reviews.swift in Sources */,
 				964C7A42222F2B4F005F5C95 /* TodayController.swift in Sources */,
 				9665FC34222DBE5F003EE586 /* Extensions.swift in Sources */,
