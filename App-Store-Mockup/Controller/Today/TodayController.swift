@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
+class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
 
     var items = [TodayItem]()
 
@@ -26,13 +26,23 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         tabBarController?.tabBar.superview?.setNeedsLayout()
     }
 
+    let blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        collectionView.showsVerticalScrollIndicator = false
+        navigationController?.isNavigationBarHidden = true
+        
+        view.addSubview(blurVisualEffectView)
+        blurVisualEffectView.fillSuperview()
+        blurVisualEffectView.alpha = 0
+
         view.addSubview(activityIndicatorView)
         activityIndicatorView.centerInSuperview()
-        collectionView.showsVerticalScrollIndicator = false
+
         fetchData()
-        navigationController?.isNavigationBarHidden = true
+
         collectionView.backgroundColor = #colorLiteral(red: 0.948936522, green: 0.9490727782, blue: 0.9489068389, alpha: 1)
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
         collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
@@ -104,6 +114,31 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         }
         appFullscreenController.view.layer.cornerRadius = 16
         self.appFullscreenController = appFullscreenController
+
+        // #1 Setup our pan gesture
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(handleDrag))
+        gesture.delegate = self
+        appFullscreenController.view.addGestureRecognizer(gesture)
+
+        // #2 Add a blur effect view
+
+        // #3 Not to interfere with our UITableView scrolling
+    }
+
+    // Still allow scroll down even with new gesture
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+
+    @objc func handleDrag(gesture: UIPanGestureRecognizer) {
+        let translationY = gesture.translation(in: appFullscreenController.view).y
+        if gesture.state == .changed {
+            let scale = 1 - translationY / 1000 // Shrinking ratio
+            let transform: CGAffineTransform = .init(scaleX: scale, y: scale)
+            self.appFullscreenController.view.transform = transform
+        } else if gesture.state == .ended {
+            handleRemoveFullscreenView()
+        }
     }
 
     fileprivate func setupStartingCellFrame(_ indexPath: IndexPath) {
@@ -129,6 +164,9 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 
     fileprivate func beginAnimationAppFullscreen() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+
+            self.blurVisualEffectView.alpha = 1
+
             self.anchoredConstraints?.top?.constant = 0
             self.anchoredConstraints?.leading?.constant = 0
             self.anchoredConstraints?.width?.constant = self.view.frame.width
@@ -156,6 +194,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     var startingFrame: CGRect?
     @objc func handleRemoveFullscreenView() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+
+            self.blurVisualEffectView.alpha = 0
+            self.appFullscreenController.view.transform = .identity
+
             self.appFullscreenController.tableView.contentOffset = .zero
 
             guard let startingFrame = self.startingFrame else { return }
@@ -165,7 +207,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             self.anchoredConstraints?.height?.constant = startingFrame.height
 
             self.view.layoutIfNeeded()
-
             self.tabBarController?.tabBar.transform = .identity
 
             guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
