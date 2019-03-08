@@ -41,7 +41,6 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
         } else {
             collectionView.isScrollEnabled = false
         }
-
         collectionView.backgroundColor = .white
         collectionView.register(MultipleAppCell.self, forCellWithReuseIdentifier: cellId)
     }
