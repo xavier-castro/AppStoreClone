@@ -80,9 +80,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
 
                 TodayItem.init(category: "Daily List", title: gamesGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: gamesGroup?.feed.results ?? []),
 
+                TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838578105, green: 0.9588007331, blue: 0.7274674177, alpha: 1), cellType: .single, apps: []),
+
                 TodayItem.init(category: "Daily List", title: topGrossingGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: topGrossingGroup?.feed.results ?? []),
 
-                TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838578105, green: 0.9588007331, blue: 0.7274674177, alpha: 1), cellType: .single, apps: []),
             ]
             self.collectionView.reloadData()
         }
@@ -110,7 +111,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         let appFullscreenController = AppFullscreenController()
         appFullscreenController.todayItem = items[indexPath.row]
         appFullscreenController.dismissHandler = {
-            self.handleRemoveFullscreenView()
+            self.handleAppFullscreenDismiss()
         }
         appFullscreenController.view.layer.cornerRadius = 16
         self.appFullscreenController = appFullscreenController
@@ -130,14 +131,35 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         return true
     }
 
+    var appFullscreenBeginOffset: CGFloat = 0
+
     @objc func handleDrag(gesture: UIPanGestureRecognizer) {
+
+        if gesture.state == .began {
+            appFullscreenBeginOffset = appFullscreenController.tableView.contentOffset.y
+        }
+
+        if appFullscreenController.tableView.contentOffset.y > 0 {
+            return
+        }
+
         let translationY = gesture.translation(in: appFullscreenController.view).y
+
         if gesture.state == .changed {
-            let scale = 1 - translationY / 1000 // Shrinking ratio
-            let transform: CGAffineTransform = .init(scaleX: scale, y: scale)
-            self.appFullscreenController.view.transform = transform
+            if translationY > 0 {
+                let trueOffset = translationY - appFullscreenBeginOffset // Smooth motion
+                var scale = 1 - trueOffset / 1000 // Shrinking ratio
+                scale = min(1, scale) // Make sure you have a min/max limit for scaling
+                scale = max(0.5, scale)
+                let transform: CGAffineTransform = .init(scaleX: scale, y: scale)
+                self.appFullscreenController.view.transform = transform
+            }
         } else if gesture.state == .ended {
-            handleRemoveFullscreenView()
+            if translationY > 0 {
+                if translationY > 0 {
+                    handleAppFullscreenDismiss()
+                }
+            }
         }
     }
 
@@ -192,7 +214,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
     }
 
     var startingFrame: CGRect?
-    @objc func handleRemoveFullscreenView() {
+    @objc func handleAppFullscreenDismiss() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
 
             self.blurVisualEffectView.alpha = 0
@@ -210,6 +232,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
             self.tabBarController?.tabBar.transform = .identity
 
             guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
+            cell.closeButton.alpha = 0
             cell.todayCell.topConstraint.constant = 24
             cell.layoutIfNeeded()
         }, completion: { _ in

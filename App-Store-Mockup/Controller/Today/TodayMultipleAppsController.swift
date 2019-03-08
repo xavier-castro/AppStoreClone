@@ -9,7 +9,6 @@
 import UIKit
 
 class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateFlowLayout {
-
     let cellId = "cellId"
 
     var apps = [FeedResult]()
