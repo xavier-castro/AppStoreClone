@@ -23,6 +23,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .white
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)

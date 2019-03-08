@@ -31,6 +31,7 @@ class BaseTodayCell: UICollectionViewCell {
         layer.shadowOpacity = 0.1
         layer.shadowRadius = 10
         layer.shadowOffset = CGSize(width: 0, height: 10)
+        layer.shouldRasterize = true // Will make your shadows less laggy
     }
     
     required init?(coder aDecoder: NSCoder) {

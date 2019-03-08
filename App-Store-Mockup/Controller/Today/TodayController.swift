@@ -30,6 +30,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         super.viewDidLoad()
         view.addSubview(activityIndicatorView)
         activityIndicatorView.centerInSuperview()
+        collectionView.showsVerticalScrollIndicator = false
         fetchData()
         navigationController?.isNavigationBarHidden = true
         collectionView.backgroundColor = #colorLiteral(red: 0.948936522, green: 0.9490727782, blue: 0.9489068389, alpha: 1)

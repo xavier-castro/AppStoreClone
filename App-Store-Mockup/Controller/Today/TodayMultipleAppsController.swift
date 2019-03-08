@@ -34,7 +34,7 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        collectionView.showsVerticalScrollIndicator = false
         if mode == .fullscreen {
             setupCloseButton()
             navigationController?.isNavigationBarHidden = true
