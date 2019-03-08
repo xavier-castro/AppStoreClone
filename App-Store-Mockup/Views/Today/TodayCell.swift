@@ -17,6 +17,7 @@ class TodayCell: BaseTodayCell {
             imageView.image = todayItem.image
             descriptionLabel.text = todayItem.description
             backgroundColor = todayItem.backgroundColor
+            backgroundView?.backgroundColor = todayItem.backgroundColor
         }
     }
 

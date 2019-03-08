@@ -26,12 +26,15 @@ class BaseTodayCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        self.backgroundView = UIView()
+        addSubview(self.backgroundView!)
+        self.backgroundView?.fillSuperview()
+        self.backgroundView?.backgroundColor = .white // Needed for shadows to appear
+        self.backgroundView?.layer.cornerRadius = 16
         // Shadow for cell
-        layer.shadowOpacity = 0.1
-        layer.shadowRadius = 10
-        layer.shadowOffset = CGSize(width: 0, height: 10)
-        layer.shouldRasterize = true // Will make your shadows less laggy
+        self.layer.shadowOpacity = 0.1
+        self.layer.shadowRadius = 10
+        self.layer.shadowOffset = CGSize(width: 0, height: 10)
     }
     
     required init?(coder aDecoder: NSCoder) {
