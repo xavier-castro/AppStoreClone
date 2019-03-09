@@ -15,6 +15,12 @@ class AppRowCell: UICollectionViewCell {
     let companyLabel = UILabel(text: "Company Name", font: .systemFont(ofSize: 13))
     let getButton = UIButton(title: "GET")
 
+    let seperatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.3, alpha: 0.3)
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -33,6 +39,9 @@ class AppRowCell: UICollectionViewCell {
         stackView.alignment = .center
         addSubview(stackView)
         stackView.fillSuperview()
+        
+        addSubview(seperatorView)
+        seperatorView.anchor(top: nil, leading: nameLabel.leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: 0, bottom: -8, right: 0), size: CGSize(width: 0, height: 0.5))
     }
 
     required init?(coder aDecoder: NSCoder) {
