@@ -41,6 +41,7 @@ override func viewDidLoad() {
     closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
     setupCloseButton()
     tableView.showsVerticalScrollIndicator = false
+    tableView.separatorStyle = .none
     tableView.allowsSelection = false
     tableView.contentInsetAdjustmentBehavior = .never
     let height = UIApplication.shared.statusBarFrame.height
